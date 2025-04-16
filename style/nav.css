@@ -1,0 +1,180 @@
+/* Strict Color Scheme */
+:root {
+    --dusty-rose: #866878;
+    --deep-teal: #d98895;
+    --vibrant-teal: #d49BA7;
+    --soft-blush: #DAABB5;
+    --hot-pink: #EF03A0;
+    --golden: #53222a;
+    --pure-white: #FFFFFF;
+    --ivory: #FFFFF5;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: var(--ivory);
+    color: var(--dusty-rose);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* Navigation */
+.navbar {
+    background: var(--pure-white);
+    padding: 1rem 5%;
+    overflow: hidden;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--dusty-rose), var(--hot-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 1.5px;
+    position: relative;
+    float: left;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--golden), var(--hot-pink), var(--deep-teal));
+    border-radius: 3px;
+}
+
+.limited-offer {
+    background: linear-gradient(45deg, var(--golden), var(--hot-pink));
+    color: var(--pure-white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-left: 1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+    float: right;
+}
+
+.desktop-nav a {
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.nav-link {
+    color: var(--dusty-rose);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: all 0.4s ease;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: var(--hot-pink);
+}
+
+.nav-link::before {
+    content: '✧';
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: var(--golden);
+}
+
+.nav-link:hover::before {
+    opacity: 1;
+    left: -1.2rem;
+}
+
+.cart-count {
+    background-color: var(--hot-pink);
+    color: var(--pure-white);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    font-size: 0.7rem;
+    margin-left: 5px;
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--dusty-rose);
+    z-index: 1001;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    float: right;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--pure-white);
+    padding-top: 80px;
+    padding-left: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.mobile-nav.active {
+    transform: translateX(0);
+}
+
+.mobile-nav .nav-link {
+    font-size: 1.2rem;
+    padding: 0.8rem 0;
+    margin: 0.3rem 0;
+    display: block;
+    width: 100%;
+}
+
+/* Main Content */
+main {
+    padding: 3rem 5%;
+    position: relative;
+    min-height: calc(100vh - 300px);
+}

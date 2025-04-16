@@ -1,0 +1,20 @@
+/* Home page specific styles */
+main {
+    margin-top: 70px; /* Offset for fixed nav */
+}
+
+.hero-section {
+    height: 80vh;
+    background: url('../images/hero-bg.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.featured-products {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}

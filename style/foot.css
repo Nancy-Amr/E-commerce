@@ -1,0 +1,202 @@
+/* Strict Color Scheme */
+:root {
+    --dusty-rose: #866878;
+    --deep-teal: #d98895;
+    --vibrant-teal: #d49BA7;
+    --soft-blush: #DAABB5;
+    --hot-pink: #EF03A0;
+    --golden: #53222a;
+    --pure-white: #FFFFFF;
+    --ivory: #FFFFF5;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: var(--ivory);
+    color: var(--dusty-rose);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+
+/* Footer - Modified without flex */
+footer {
+    background: linear-gradient(135deg, var(--dusty-rose), var(--deep-teal));
+    color: var(--pure-white);
+    padding: 4rem 5% 2rem;
+    position: relative;
+    clear: both;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--golden), var(--hot-pink), var(--vibrant-teal));
+}
+
+.footer-container {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.footer-col {
+    width: 23%;
+    float: left;
+    margin-right: 2.66%;
+    margin-bottom: 2rem;
+}
+
+.footer-col:last-child {
+    margin-right: 0;
+}
+
+/* Special styling for footer headings */
+.footer-col h3 {
+    color: var(--golden);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 50%;
+    height: 2px;
+    background: var(--soft-blush);
+    transition: width 0.3s ease;
+}
+
+.footer-col:hover h3::after {
+    width: 100%;
+}
+
+.footer-link {
+    color: var(--pure-white);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    display: block;
+    transition: all 0.3s ease;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.footer-link::before {
+    content: '❀';
+    position: absolute;
+    left: 0;
+    color: var(--golden);
+    font-size: 0.8rem;
+}
+
+.footer-link:hover {
+    color: var(--golden);
+    transform: translateX(8px);
+}
+
+.contact-info {
+    margin-top: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+/* Updated Contact Icons to Match Theme */
+.contact-icon {
+    position: absolute;
+    left: 0;
+    color: var(--golden);
+    font-size: 1.2rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.email-icon::before {
+    content: '✉';
+}
+
+.phone-icon::before {
+    content: '☎';
+}
+
+.location-icon::before {
+    content: '📍';
+}
+
+.time-icon::before {
+    content: '⏲';
+}
+
+.catchy-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    color: var(--soft-blush);
+    font-size: 0.9rem;
+    clear: both;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .menu-btn {
+        display: block;
+    }
+    
+    .footer-col {
+        width: 48%;
+        margin-right: 4%;
+    }
+    
+    .footer-col:nth-child(2n) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-col {
+        width: 100%;
+        margin-right: 0;
+        float: none;
+    }
+}
+
+/* Clearfix for floated elements */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
