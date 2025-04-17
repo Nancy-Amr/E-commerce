@@ -22,7 +22,7 @@ body {
     background-color: var(--ivory);
     color: var(--dusty-rose);
     line-height: 1.7;
-    min-height: 100vh;
+    min-height: 100vh; 
 }
 
 
@@ -31,7 +31,7 @@ footer {
     background: linear-gradient(135deg, var(--dusty-rose), var(--deep-teal));
     color: var(--pure-white);
     padding: 4rem 5% 2rem;
-    position: relative;
+    position: static;
     clear: both;
 }
 
@@ -45,9 +45,9 @@ footer::before {
     background: linear-gradient(90deg, var(--golden), var(--hot-pink), var(--vibrant-teal));
 }
 
-.footer-container {
+.footer-container  {
     display: block;
-    overflow: hidden;
+    overflow: hidden ;
     margin-bottom: 2rem;
 }
 

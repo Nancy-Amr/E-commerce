@@ -2,21 +2,28 @@
 <html>
 <head>
     <title>ITAKEYOU</title>
-    <!-- Load CSS -->
+    <!-- Load all CSS -->
     <link rel="stylesheet" href="../style/nav.css">
-    <link rel="stylesheet" href="../style/home.css">
+    <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/foot.css">
+    <!-- Favicon fix -->
+    <link rel="icon" href="data:,">
 </head>
 <body>
-    <!-- Navigation (Embedded via iframe) -->
-    <iframe src="nav.html" style="width:100%; border:none;"></iframe>
-
-    <!-- Main Content -->
-    <main>
+    <!-- Navigation Container -->
+    <div id="nav-container"></div>
+    
+    <!-- Dynamic Content Area -->
+    <main id="content-container">
+        <!-- Initial content will be replaced -->
         <h1>Welcome to ITAKEYOU</h1>
+        <button class="limited-offer">Start Shopping</button>
     </main>
-
-    <!-- Footer (Embedded via object) -->
-    <object data="foot.html" style="width:100%; border:none;"></object>
+    
+    <!-- Footer Container -->
+    <div id="foot-container"></div>
+    
+    <!-- Main JavaScript -->
+    <script src="../javascript/main.js"></script>
 </body>
 </html>

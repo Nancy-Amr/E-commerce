@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="title">Feedback Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style/feedback.css">
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header gradient-bg">
+                    <h2 class="text-center mb-0"><i class="fas fa-comment-alt me-2"></i>Feedback Form</h2>
+                </div>
+                <div class="card-body" style="background-color: #f8f1f2;">
+                    <form>
+                        <!-- Name Field -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+    
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+    
+                        <!-- Rating -->
+                        <div class="mb-3">
+                            <label class="form-label">Rating</label>
+                            <div class="rating">
+                                <i class="far fa-star fa-2x" data-rating="1"></i>
+                                <i class="far fa-star fa-2x" data-rating="2"></i>
+                                <i class="far fa-star fa-2x" data-rating="3"></i>
+                                <i class="far fa-star fa-2x" data-rating="4"></i>
+                                <i class="far fa-star fa-2x" data-rating="5"></i>
+                                <input type="hidden" name="rating" id="rating-value">
+                            </div>
+                        </div>
+    
+                        <!-- Feedback -->
+                        <div class="mb-3">
+                            <label for="feedback" class="form-label">Your Feedback</label>
+                            <textarea class="form-control" id="feedback" rows="4" ></textarea>
+                        </div>
+    
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn gradient-bg py-2" style="background-color: #53222a; border-color: #3a171d;">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="foot-container"></div>
+    
+    
+    <script src="../javascript/main.js"></script>
+  
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const stars = document.querySelectorAll('.rating i');
+    const ratingInput = document.getElementById('rating-value');
+    
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = this.getAttribute('data-rating');
+            ratingInput.value = rating;
+            
+            stars.forEach(s => {
+                if (s.getAttribute('data-rating') <= rating) {
+                    s.classList.remove('far');
+                    s.classList.add('fas');
+                    s.style.color = 'gold';
+                } else {
+                    s.classList.remove('fas');
+                    s.classList.add('far');
+                    s.style.color = '';
+                }
+            });
+        });
+    });
+});
+    </script>
+</body>
+</html>

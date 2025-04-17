@@ -1,6 +1,7 @@
 /* Home page specific styles */
 main {
-    margin-top: 70px; /* Offset for fixed nav */
+    margin-top: 70px; /* Offset for fixed nav */  
+    text-align: center;
 }
 
 .hero-section {
@@ -18,3 +19,8 @@ main {
     max-width: 1200px;
     margin: 0 auto;
 }
+button{
+    margin-top: 40px;
+}
+
+

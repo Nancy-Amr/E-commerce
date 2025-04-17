@@ -1,0 +1,38 @@
+:root {
+    --dusty-rose: #866878;
+    --deep-teal: #d98895;
+    --vibrant-teal: #d49BA7;
+    --soft-blush: #DAABB5;
+    --hot-pink: #EF03A0;
+    --golden: #53222a;
+    --pure-white: #FFFFFF;
+    --ivory: #FFFFF5;
+}
+
+
+.rating i {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.rating i:hover {
+    color: gold;
+}
+.form-control{
+   
+
+    background-color: var(--input-bg);
+    border: 1px solid var(--deep-teal); /* Bootstrap default */
+  }
+
+  
+  /* Gradient for header and button only */
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--dusty-rose), var(--deep-teal));
+    color: var(--text-light);
+    border: none;
+  }
+    
+  /* Hover effects */
+  .btn.gradient-bg:hover {
+    background: linear-gradient(135deg, var(--deep-teal), var(--dusty-rose));
+  }
