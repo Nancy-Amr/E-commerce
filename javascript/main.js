@@ -1,4 +1,3 @@
-// Path configuration
 const PATHS = {
     components: '../HTML/',
     content: '../HTML/'
@@ -22,7 +21,6 @@ async function loadComponents() {
         setupNavigation();
     } catch (error) {
         console.error('Component loading failed:', error);
-        componentsLoaded = false;
         throw error;
     }
 }
@@ -31,14 +29,21 @@ async function loadContent(page, isPopState = false) {
     try {
         if (isPopState) await loadComponents();
         
-        const response = await fetch(`${PATHS.content}${page}`);
+        const pageFile = page.endsWith('.html') ? page : `${page}.html`;
+        const response = await fetch(`${PATHS.content}${pageFile}`);
+        
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         
         document.getElementById('content-container').innerHTML = await response.text();
-        history.pushState({ page }, '', page);
+        history.pushState({ page }, '', page.replace('.html', ''));
+        
+        // Reinitialize popups for order page
+        if (page.includes('order') && window.initOrderPopup) {
+            initOrderPopup();
+        }
     } catch (error) {
         console.error(`Failed to load ${page}:`, error);
-        if (page !== 'home.html') loadContent('home.html', isPopState);
+        loadContent('home', isPopState);
     }
 }
 
@@ -52,13 +57,14 @@ function setupNavigation() {
     });
     
     window.addEventListener('popstate', (e) => {
-        loadContent(e.state?.page || 'home.html', true);
+        loadContent(e.state?.page || 'home', true);
     });
 }
 
+// Initial load
 document.addEventListener('DOMContentLoaded', () => {
     loadComponents().then(() => {
         const urlParams = new URLSearchParams(window.location.search);
-        loadContent(urlParams.get('page') || 'home.html');
+        loadContent(urlParams.get('page') || 'home');
     });
 });
