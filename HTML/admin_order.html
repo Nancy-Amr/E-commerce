@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Orders</title>
+  <link rel="stylesheet" href="../style/admin_order.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="admin-orders-container">
+    <h1>Order Management</h1>
+
+    <!-- Filter/Search -->
+    <div class="filter-bar">
+      <input type="text" placeholder="Search by Order ID or Customer..." />
+      <select>
+        <option value="">All Statuses</option>
+        <option value="processing">Processing</option>
+        <option value="shipped">Shipped</option>
+        <option value="delivered">Delivered</option>
+        <option value="canceled">Canceled</option>
+      </select>
+      <button class="btn-filter">Filter</button>
+    </div>
+
+    <!-- Orders Table -->
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Customer</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#ORD-2023-5678</td>
+          <td>April 12, 2025</td>
+          <td>Jane Doe</td>
+          <td>$168.45</td>
+          <td class="status-actions-cell">
+            <div class="status-actions-wrapper">
+              <div class="status-select-wrapper">
+                <select class="status-select status-processing" data-order-id="ORD-1234">
+                  <option value="processing" selected>Processing</option>
+                  <option value="shipped">Shipped</option>
+                  <option value="delivered">Delivered</option>
+                  <option value="canceled">Canceled</option>
+                </select>
+                <span class="select-arrow">▼</span>
+              </div>
+              <div class="action-buttons">
+                <button class="btn-view" data-order-id="ORD-1234">View</button>
+                <button class="btn-update" data-order-id="ORD-1234">Update</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal for Viewing Order -->
+  <div class="modal-overlay" id="view-modal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <h2 class="details">Order Details</h2>
+      <div id="order-details-content">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../javascript/admin_order.js"></script>
+</body>
+</html>
