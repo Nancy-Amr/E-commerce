@@ -1,0 +1,319 @@
+:root {
+    --golden: #d4379a;
+    --hot-pink: #ff69b4;
+    --deep-teal: #49004d;
+    --dusty-rose: #a17688;
+    --ivory: #fdf8f2;
+    --pure-white: #fff;
+    --soft-blush: #fce4ec;
+    --vibrant-teal: #1abc9c;
+    
+    /* Status gradients */
+    --status-processing: linear-gradient(to right, var(--golden), var(--deep-teal));
+    --status-shipped: linear-gradient(to right, var(--deep-teal), var(--vibrant-teal));
+    --status-delivered: linear-gradient(to right, var(--vibrant-teal), var(--soft-blush));
+    --status-canceled: linear-gradient(to right, var(--hot-pink), #c2185b);
+  }
+  
+  .admin-orders-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  
+  h1 {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--golden);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--soft-blush);
+    padding-bottom: 0.5rem;
+  }
+  
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+  }
+  
+  .filter-bar input,
+  .filter-bar select,
+  .filter-bar .btn-filter {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--soft-blush);
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .btn-filter {
+    background: linear-gradient(45deg, #2d1441, #b50864);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .btn-filter:hover {
+    background: linear-gradient(45deg, #b50864, #2d1441);
+  }
+  
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--pure-white);
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .orders-table th,
+  .orders-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--soft-blush);
+  }
+  
+  .orders-table th {
+    background-color: var(--ivory);
+    color: var(--deep-teal);
+    font-weight: bold;
+  }
+  
+  /* Status and Actions Cell */
+  .status-actions-cell {
+    min-width: 250px;
+  }
+  
+  .status-actions-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  /* Status selects */
+  .status-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0.4rem 2rem 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #49004d;
+    background-color: #fdf8f2;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+    text-align-last: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1em;
+    padding-right: 2.5rem !important; /* Make room for our custom arrow */
+  }
+  
+  .status-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.3);
+  }
+  
+  .status-processing {
+    background: var(--status-processing);
+  }
+  
+  .status-shipped {
+    background: var(--status-shipped);
+  }
+  
+  .status-delivered {
+    background: var(--status-delivered);
+    color: var(--golden);
+  }
+  
+  .status-canceled {
+    background: var(--status-canceled);
+  }
+  
+  /* Buttons */
+  .btn-view,
+  .btn-update {
+    padding: 0.5rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .btn-view {
+    background: linear-gradient(135deg, #2d1441, #b50864);
+    color: white;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-view:hover {
+    background: linear-gradient(135deg, #b50864, #2d1441);
+  }
+  
+  .btn-update {
+    background: linear-gradient(135deg, #2d1441, #b50864);
+    color: white;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-update:hover {
+    background: linear-gradient(135deg, #b50864, #2d1441);
+  }
+  
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(107, 66, 92, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-overlay.active {
+    display: flex;
+  }
+  
+  .modal-content {
+    background: var(--pure-white);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 8px 25px rgba(139, 92, 160, 0.25);
+    position: relative;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted-plum, #6b425c);
+  }
+  
+  .details {
+    color: var(--golden);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .orders-table, .orders-table thead, .orders-table tbody, .orders-table th, .orders-table td, .orders-table tr {
+      display: block;
+    }
+    .orders-table th {
+      display: none;
+    }
+    .orders-table td {
+      padding: 0.8rem;
+      border: none;
+      position: relative;
+    }
+    .orders-table td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      color: var(--dusty-rose);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    
+    .status-actions-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .action-buttons {
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+
+  /* Status Select Wrapper */
+/* Status Select Wrapper */
+.status-select-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: 2rem; /* Increased space between dropdown and buttons */
+  }
+  
+  /* Select Dropdown Options Styling */
+  .status-select option {
+    background-color: #fdf8f2; /* Light ivory background */
+    color: #49004d; /* Deep teal text color */
+    padding: 0.5rem;
+  }
+  
+  /* Active/Hover Select Options */
+  .status-select option:hover,
+  .status-select option:focus,
+  .status-select option:checked {
+    background-color: #d4379a; /* Golden color */
+    color: white;
+  }
+  
+  /* Select Dropdown Background */
+  .status-select {
+    background-color: #fdf8f2; /* Light ivory background */
+    color: #49004d; /* Deep teal text color */
+    padding-right: 2.5rem !important;
+  }
+  
+  /* Status-specific select backgrounds */
+  .status-select.status-processing {
+    background: linear-gradient(to right, #d4379a, #49004d);
+    color: white;
+  }
+  
+  .status-select.status-shipped {
+    background: linear-gradient(to right, #49004d, #1abc9c);
+    color: white;
+  }
+  
+  .status-select.status-delivered {
+    background: linear-gradient(to right, #1abc9c, #fce4ec);
+    color: #d4379a;
+  }
+  
+  .status-select.status-canceled {
+    background: linear-gradient(to right, #ff69b4, #c2185b);
+    color: white;
+  }
+  
+  .select-arrow {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white;
+    font-size: 0.8em;
+  }
+  
+  /* Remove default arrow in IE */
+  .status-select::-ms-expand {
+    display: none;
+  }
+  
+  /* Adjust the select padding to prevent text overlap */
+  
