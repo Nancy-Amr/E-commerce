@@ -41,6 +41,9 @@ async function loadContent(page, isPopState = false) {
         if (page.includes('order') && window.initOrderPopup) {
             initOrderPopup();
         }
+        if (page.includes('cart') && window.initCart) {
+            initCart();
+        }
     } catch (error) {
         console.error(`Failed to load ${page}:`, error);
         loadContent('home', isPopState);
