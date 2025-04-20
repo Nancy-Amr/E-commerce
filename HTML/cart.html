@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ITAKEYOU - Cart</title>
+    <link rel="stylesheet" href="../style/nav.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/foot.css">
+    <link rel="stylesheet" href="../style/cart.css">
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <main id="content-container">
+        <div class="cart-container">
+            <h1>Your Shopping Cart</h1>
+            <br>
+            
+            <div class="cart-layout">
+                <!-- Left side - Cart Items -->
+                <div class="cart-items-container">
+                    <div class="cart-header">
+                        <div class="header-item">Product</div>
+                        <div class="header-price">Price</div>
+                        <div class="header-qty">Quantity</div>
+                        <div class="header-total">Total</div>
+                        <div class="header-action">Remove</div>
+                    </div>
+                    <div class="cart-items">
+                        <div class="cart-item">
+                            <div class="item-info">
+                                <div class="item-name">Premium T-Shirt</div>
+                            </div>
+                            <div class="item-price">$29.99</div>
+                            <div class="item-controls">
+                                <input type="number" min="1" value="2" class="item-qty">
+                            </div>
+                            <div class="item-total">$59.98</div>
+                            <button class="remove-btn">&times;</button>
+                        </div>
+
+                        <div class="cart-item">
+                            <div class="item-info">
+                                <div class="item-name">Designer Jeans</div>
+                            </div>
+                            <div class="item-price">$89.99</div>
+                            <div class="item-controls">
+                                <input type="number" min="1" value="1" class="item-qty">
+                            </div>
+                            <div class="item-total">$89.99</div>
+                            <button class="remove-btn">&times;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side - Order Summary -->
+                <div class="cart-summary-container">
+                    <div class="cart-summary">
+                        <h2>Order Summary</h2>
+                        
+                        <div class="summary-row">
+                            <div class="summary-label">Subtotal:</div>
+                            <div class="summary-value" id="cart-subtotal">$149.97</div>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <div class="summary-label">Shipping:</div>
+                            <div class="summary-value" id="cart-shipping">$5.99</div>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <div class="summary-label">Tax:</div>
+                            <div class="summary-value" id="cart-tax">$12.49</div>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <div class="summary-label">Discount:</div>
+                            <div class="summary-value" id="cart-discount">-$0.00</div>
+                        </div>
+                        
+                        <div class="summary-row coupon-row">
+                            <div class="summary-label">Promo Code:</div>
+                            <div class="coupon-input-group">
+                                <input type="text" id="coupon-code" placeholder="Enter code">
+                                <button id="apply-coupon">Apply</button>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-row total">
+                            <div class="summary-label">Total:</div>
+                            <div class="summary-value" id="cart-total">$168.45</div>
+                        </div>
+                        
+                        <button class="checkout-btn">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="foot-container"></div>
+
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/cart.js"></script>
+</body>
+</html>
