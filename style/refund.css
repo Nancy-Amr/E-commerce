@@ -1,0 +1,119 @@
+/* refund.css - Refund Policy Styles */
+
+/* ========== COLOR SCHEME ========== */
+:root {
+    --primary: #d4548c;
+    --secondary: #a83e72;
+    --light-bg: #fff9fb;
+    --alert-bg: #fff5f5;
+    --highlight: #fff2d5;
+}
+
+/* ========== BASE STYLES ========== */
+.refund-policy-page {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fdfafb;
+}
+
+/* ========== HEADER STYLES ========== */
+.refund-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.refund-title {
+    color: var(--primary);
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.refund-section-title {
+    color: var(--secondary);
+    margin-top: 25px;
+}
+
+/* ========== POLICY CARD STYLES ========== */
+.policy-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--primary);
+}
+
+.non-refundable {
+    border-left-color: #ff6b6b;
+    background-color: var(--alert-bg);
+}
+
+/* ========== HIGHLIGHT BOX ========== */
+.highlight-box {
+    background-color: var(--highlight);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+    font-weight: 500;
+}
+
+/* ========== LIST STYLES ========== */
+.refund-list,
+.refund-numbered-list {
+    padding-left: 20px;
+}
+
+.refund-list li,
+.refund-numbered-list li {
+    margin-bottom: 10px;
+}
+
+
+
+/* ========== BADGE STYLES ========== */
+.badge {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+/* ========== TABLE STYLES ========== */
+.refund-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.refund-table,
+.refund-table th,
+.refund-table td {
+    border: 1px solid #ddd;
+}
+
+.refund-table th,
+.refund-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.refund-table th {
+    background-color: var(--light-bg);
+}
+
+/* ========== LINK STYLES ========== */
+.refund-link {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.refund-link:hover {
+    text-decoration: underline;
+}
