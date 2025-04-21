@@ -1,12 +1,11 @@
-// cart.js - Complete implementation with retry logic
+// cart.js - Updated SPA-compatible version
 function initCart() {
     const cartItems = document.querySelectorAll('.cart-item');
     const couponInput = document.getElementById('coupon-code');
     
     // Retry if cart elements aren't loaded yet
     if (!cartItems.length || !document.getElementById('cart-subtotal')) {
-        console.log("Cart elements not found, retrying...");
-        setTimeout(initCart, 100);
+        console.log("Cart elements not found, will initialize when content changes");
         return;
     }
 
@@ -36,38 +35,68 @@ function initCart() {
         document.getElementById('cart-total').textContent = `$${(subtotal + shipping + tax - discount).toFixed(2)}`;
     }
 
+    // Clean up existing event listeners to prevent duplicates
+    document.querySelectorAll('.item-qty').forEach(input => {
+        input.removeEventListener('change', updateCartTotals);
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.removeEventListener('click', removeItemHandler);
+    });
+
+    if (document.getElementById('apply-coupon')) {
+        document.getElementById('apply-coupon').removeEventListener('click', updateCartTotals);
+    }
+
+    if (couponInput) {
+        couponInput.removeEventListener('keypress', couponKeypressHandler);
+    }
+
     // Set up quantity change listeners
     document.querySelectorAll('.item-qty').forEach(input => {
         input.addEventListener('change', updateCartTotals);
     });
 
     // Set up remove item listeners
+    function removeItemHandler(e) {
+        e.target.closest('.cart-item').remove();
+        updateCartTotals();
+    }
+    
     document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.target.closest('.cart-item').remove();
-            updateCartTotals();
-        });
+        btn.addEventListener('click', removeItemHandler);
     });
 
     // Set up coupon application
+    function couponKeypressHandler(e) {
+        if (e.key === 'Enter') {
+            updateCartTotals();
+        }
+    }
+    
     const applyCouponBtn = document.getElementById('apply-coupon');
     if (applyCouponBtn) {
         applyCouponBtn.addEventListener('click', updateCartTotals);
-        
-        // Allow Enter key in coupon field
-        couponInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                updateCartTotals();
-            }
-        });
+        couponInput.addEventListener('keypress', couponKeypressHandler);
     }
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.checkout-btn');
+        if (btn) {
+            e.preventDefault();
+            ContentLoader.loadPageContent('checkout.html');
+        }
+    });
 
     // Initial calculation
     updateCartTotals();
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', initCart);
-
-// Make available for reinitialization after dynamic loads
+// Export function for main.js to call
 window.initCart = initCart;
+
+// Initialize if DOM is already loaded and content is present
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(initCart, 0);
+} else {
+    document.addEventListener('DOMContentLoaded', initCart);
+}
