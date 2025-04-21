@@ -113,6 +113,12 @@ const ContentLoader = {
             if (page.includes('products')) {
                 document.dispatchEvent(new CustomEvent('contentLoaded', { detail: { page } }));
             }
+             if (page.includes('order.html') && typeof initOrderPopup === 'function') {
+            initOrderPopup();
+        }
+            if (page.includes('cart.html') && typeof initCart === 'function') {
+            initCart();
+            }
         } catch (error) {
             console.error(`Failed to load ${page}:`, error);
             if (page !== CONFIG.defaultPage) {
