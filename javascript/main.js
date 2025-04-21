@@ -100,6 +100,13 @@ const ContentLoader = {
             if (!isHistoryNavigation) {
                 history.pushState({ page }, '', page.split('/').pop());
             }
+
+            if (page.includes('order.html') && typeof initOrderPopup === 'function') {
+            initOrderPopup();
+        }
+            if (page.includes('cart.html') && typeof initCart === 'function') {
+            initCart();
+            }
     
             // Load feedback.js if needed
             if (page.includes('feedback.html') && !window.feedbackJSLoaded) {
