@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ITAKEYOU - Checkout</title>
+
+    <link rel="stylesheet" href="../style/nav.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/foot.css">
+    <link rel="stylesheet" href="../style/checkout.css">
+
+    <link rel="icon" href="data:,">
+</head>
+
+
+<body>
+    <!-- Navigation Container -->
+    <div id="nav-container"></div>
+
+      <!-- Dynamic Content Area -->
+    <main id="content-container">
+        <div class="checkout-container">
+            <h1>Checkout</h1>
+            <br>
+
+            <!-- 1. Customer Address and Phone Number -->
+            <div class="checkout-section">
+                <h2>Shipping Address</h2>
+                <div class="address-details">
+                    <p><strong>Name:</strong> Menna Ayman</p>
+                    <p><strong>Address:</strong> <span id="customer-address">123 Main St, Cairo</span></p>
+                    <p><strong>Phone:</strong> +20 1122369308</p>
+                </div>
+            </div>
+
+            <!-- 2. Order Summary  -->
+            <div class="checkout-section">
+                <h2>Order Summary</h2>
+                <div class="order-items">
+                    <div class="order-item">
+                        <div class="item-info">
+                            <div class="item-name">Mac blusher</div>
+                            <small>Color: Pink</small>
+                        </div>
+                        <div class="item-quantity">Quantity: <span id="quantity-0">1</span></div>
+                        <div class="item-price">100.00 EGP</div>
+                    </div>
+                    <div class="order-item">
+                        <div class="item-info">
+                            <div class="item-name">Foundation</div>
+                            <small>Size: 100 ml</small>
+                        </div>
+                        <div class="item-quantity">Quantity: <span id="quantity-1">2</span></div>
+                        <div class="item-price">150.00 EGP</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Shipping Method -->
+            <div class="checkout-section">
+                <h2>Shipping Method</h2>
+                <select id="shipping-method" class="form-input" onchange="updateSummary()">
+                    <option value="regular">Regular</option>
+                    <option value="fast">Fast (+9%)</option>
+                </select>
+                <p>Shipping Cost: <span id="shipping-cost">50.00</span> EGP</p>
+            </div>
+
+            <!-- 4. Payment Method -->
+            <div class="checkout-section">
+                <h2>Payment Method</h2>
+                <select id="payment-method" class="form-input" onchange="updateSummary()">
+                    <option value="card">Card</option>
+                    <option value="cash">Cash on Delivery (+1%)</option>
+                    <option value="fawry">Fawry</option>
+                    <option value="instapay">InstaPay</option>
+                </select>
+            </div>
+
+            <!-- 5. Coupon Application -->
+            <div class="checkout-section">
+                <h2>Apply Coupon</h2>
+                <div class="coupon-input-group">
+                    <input type="text" id="coupon-code" class="form-input" placeholder="Enter coupon code">
+                    <button id="apply-coupon" onclick="applyCoupon()">Apply</button>
+                </div>
+                <p id="coupon-status" class="coupon-status"></p>
+            </div>
+
+            <!-- 6. Price Summary -->
+            <div class="checkout-section">
+                <h2>Price Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">350.00</span> EGP
+                </div>
+                <div class="summary-row">
+                    <span>Shipping Fee</span>
+                    <span id="summary-shipping">50.00</span> EGP
+                </div>
+                <div class="summary-row">
+                    <span>Promotions Discount</span>
+                    <span id="promo-discount">0.00</span> EGP
+                </div>
+                <div class="summary-row">
+                    <span>Coupon Discount</span>
+                    <span id="coupon-discount">0.00</span> EGP
+                </div>
+                <div class="summary-row">
+                    <span>Tax (10%)</span>
+                    <span id="tax">35.00</span> EGP
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="total">435.00</span> EGP
+                </div>
+            </div>
+
+            <!-- 7. Place Order Button -->
+            <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+        </div>
+    </main>
+
+    <div id="foot-container"></div>
+
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/checkout.js"></script>
+</body>
+</html>
