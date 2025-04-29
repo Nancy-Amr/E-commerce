@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup Store Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../style/forms.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <!-- Signup Form Column -->
+            <div class="col-md-6 login-column d-flex align-items-center justify-content-center">
+                <div class="login-form-container">
+                    <h2 class="text-center mb-2">Sign Up</h2>
+                    <p class="text-center text-muted small mb-4">JOIN OUR BEAUTY COMMUNITY TODAY</p>
+                    
+                    <form>
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullname" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" required>
+                                <span class="input-group-text password-toggle">
+                                    <i class="bi bi-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="confirm-password" required>
+                                <span class="input-group-text password-toggle-confirm">
+                                    <i class="bi bi-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="terms" required>
+                            <label class="form-check-label small" for="terms">I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 login-btn">Create Account</button>
+                        
+                        <div class="text-center my-3 text-muted">
+                            <small>Or Sign Up With</small>
+                        </div>
+                        
+                        <div class="social-login d-flex justify-content-center gap-3">
+                            <button type="button" class="btn btn-outline-secondary social-btn">
+                                <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/icons/google.svg" alt="Google" width="20">
+                                Google
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary social-btn">
+                                <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/icons/facebook.svg" alt="Facebook" width="20">
+                                Facebook
+                            </button>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <p class="mb-0">Already have an account? <a href="login.html" class="signup-link">Log in</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Image Column -->
+            <div class="col-md-6 image-column d-none d-md-block">
+                <div class="makeup-image-container signup-image"></div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../javascript/signup.js"></script>
+        
+</body>
+</html>
