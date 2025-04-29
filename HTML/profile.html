@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup Store Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style/forms.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <!-- Profile Content Column -->
+            <div class="col-md-8 profile-column d-flex align-items-center justify-content-center">
+                <div class="profile-container">
+                    <h2 class="mb-4">My Profile</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-4 mb-md-0">
+                            <div class="profile-image-container mb-3">
+                                <img src="https://via.placeholder.com/150" alt="Profile" class="rounded-circle img-fluid profile-image">
+                                <div class="edit-overlay">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </div>
+                            </div>
+                            <h4 class="mb-1">Jane Doe</h4>
+                        
+                            <button class="btn btn-outline-primary profile-btn mb-2">Edit Profile</button>
+                            <a href="login.html" class="btn btn-outline-secondary profile-btn">Logout</a>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="profile-tabs">
+                                <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab">Personal Info</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="order.html" class="nav-link" id="orders-tab">Orders</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="cart.html" class="nav-link" id="cart-tab">Cart</a>
+                                    </li>
+                                </ul>
+                                
+                                <div class="tab-content p-3 border border-top-0 rounded-bottom" id="profileTabsContent">
+                                    <div class="tab-pane fade show active" id="personal" role="tabpanel">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="fullName" class="form-label">Full Name</label>
+                                                <input type="text" class="form-control" id="fullName" value="fullName">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" value="email@example.com">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Phone</label>
+                                                <input type="phonenumber" class="form-control" id="phone" value="+201000200030">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="address" class="form-label">Address</label>
+                                                <textarea class="form-control" id="address" rows="2">123 Makeup Street, Beauty City, BC 12345</textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary profile-save-btn">Save Changes</button>
+                                        </form>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Image Column -->
+            <div class="col-md-4 image-column d-none d-md-block">
+                <div class="makeup-image-container profile-image-bg"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../javascript/profile.js"></script>
+</body>
+</html>
