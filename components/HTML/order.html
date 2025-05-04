@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ITAKEYOU - Orders</title>
+    <!-- Load all CSS -->
+    <link rel="stylesheet" href="../style/nav.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/foot.css">
+    <link rel="stylesheet" href="../style/order.css">
+    <!-- Favicon fix -->
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <!-- Navigation Container -->
+    <div id="nav-container"></div>
+    
+    <!-- Dynamic Content Area -->
+    <main id="content-container">
+        <div class="orders-container">
+            <h1>Your Orders</h1>
+            
+            <!-- Order list -->
+            <div class="order-list">
+                <!-- Order 1 -->
+                <div class="order-item">
+                    <div class="order-header" data-order-id="ORD-2023-5678">
+                        <div class="order-info">
+                            <div class="order-id">Order #ORD-2023-5678</div>
+                            <div class="order-date">April 12, 2025</div>
+                        </div>
+                        <div class="order-status status-processing">Processing</div>
+                    </div>
+                </div>
+                
+                <!-- Order 2 -->
+                <div class="order-item">
+                    <div class="order-header" data-order-id="ORD-2023-4321">
+                        <div class="order-info">
+                            <div class="order-id">Order #ORD-2023-4321</div>
+                            <div class="order-date">April 5, 2025</div>
+                        </div>
+                        <div class="order-status status-shipped">Shipped</div>
+                    </div>
+                </div>
+                
+                <!-- Order 3 -->
+                <div class="order-item">
+                    <div class="order-header" data-order-id="ORD-2023-9876">
+                        <div class="order-info">
+                            <div class="order-id">Order #ORD-2023-9876</div>
+                            <div class="order-date">March 28, 2025</div>
+                        </div>
+                        <div class="order-status status-delivered">Delivered</div>
+                    </div>
+                </div>
+                
+                <!-- Order 4 -->
+                <div class="order-item">
+                    <div class="order-header" data-order-id="ORD-2023-1234">
+                        <div class="order-info">
+                            <div class="order-id">Order #ORD-2023-1234</div>
+                            <div class="order-date">March 15, 2025</div>
+                        </div>
+                        <div class="order-status status-canceled">Canceled</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Overlay -->
+            <div class="overlay" id="overlay"></div>
+            
+            <!-- Order Detail Popups -->
+            <div class="order-details" id="details-ORD-2023-5678">
+                <button class="close-details">&times;</button>
+                <h2>Order #ORD-2023-5678</h2>
+                <p>Placed on April 12, 2025</p>
+                <div class="order-status status-processing" style="display: inline-block; margin-bottom: 20px;">Processing</div>
+                
+                <div class="shipping-address">
+                    <h3>Shipping Address</h3>
+                    <p>Jane Doe<br>123 Main Street<br>Apt 4B<br>New York, NY 10001</p>
+                </div>
+                
+                <div class="order-products">
+                    <h3>Products</h3>
+                    <div class="product-item">
+                        <div class="product-info">
+                            <div>
+                                <div>Premium T-Shirt</div>
+                            </div>
+                        </div>
+                        <div class="price-qty">
+                            <div>$29.99 × 2</div>
+                            <div>$59.98</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-info">
+                            <div>
+                                <div>Designer Jeans</div>
+                            </div>
+                        </div>
+                        <div class="price-qty">
+                            <div>$89.99 × 1</div>
+                            <div>$89.99</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <div class="summary-label">Subtotal:</div>
+                        <div class="summary-value">$149.97</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Shipping:</div>
+                        <div class="summary-value">$5.99</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Tax:</div>
+                        <div class="summary-value">$12.49</div>
+                    </div>
+                    <div class="summary-row total">
+                        <div class="summary-label">Total:</div>
+                        <div class="summary-value">$168.45</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-details" id="details-ORD-2023-4321">
+                <button class="close-details">&times;</button>
+                <h2>Order #ORD-2023-4321</h2>
+                <p>Placed on April 5, 2025</p>
+                <div class="order-status status-shipped" style="display: inline-block; margin-bottom: 20px;">Shipped</div>
+                
+                <div class="shipping-address">
+                    <h3>Shipping Address</h3>
+                    <p>Jane Doe<br>123 Main Street<br>Apt 4B<br>New York, NY 10001</p>
+                </div>
+                
+                <div class="order-products">
+                    <h3>Products</h3>
+                    <div class="product-item">
+                        <div class="product-info">
+                            <div>
+                                <div>Running Shoes</div>
+                            </div>
+                        </div>
+                        <div class="price-qty">
+                            <div>$119.99 × 1</div>
+                            <div>$119.99</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <div class="summary-label">Subtotal:</div>
+                        <div class="summary-value">$119.99</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Shipping:</div>
+                        <div class="summary-value">$0.00</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Tax:</div>
+                        <div class="summary-value">$10.00</div>
+                    </div>
+                    <div class="summary-row total">
+                        <div class="summary-label">Total:</div>
+                        <div class="summary-value">$129.99</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-details" id="details-ORD-2023-9876">
+                <button class="close-details">&times;</button>
+                <h2>Order #ORD-2023-9876</h2>
+                <p>Placed on March 28, 2025</p>
+                <div class="order-status status-delivered" style="display: inline-block; margin-bottom: 20px;">Delivered</div>
+                
+                <div class="shipping-address">
+                    <h3>Shipping Address</h3>
+                    <p>Jane Doe<br>123 Main Street<br>Apt 4B<br>New York, NY 10001</p>
+                </div>
+                
+                <div class="order-products">
+                    <h3>Products</h3>
+                    <div class="product-item">
+                        <div class="product-info">
+                            <div>
+                                <div>Wireless Headphones</div>
+                            </div>
+                        </div>
+                        <div class="price-qty">
+                            <div>$149.99 × 1</div>
+                            <div>$149.99</div>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <div class="product-info">
+                            <div>
+                                <div>Phone Case</div>
+                            </div>
+                        </div>
+                        <div class="price-qty">
+                            <div>$24.99 × 1</div>
+                            <div>$24.99</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <div class="summary-label">Subtotal:</div>
+                        <div class="summary-value">$174.98</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Shipping:</div>
+                        <div class="summary-value">$4.99</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Tax:</div>
+                        <div class="summary-value">$14.50</div>
+                    </div>
+                    <div class="summary-row total">
+                        <div class="summary-label">Total:</div>
+                        <div class="summary-value">$194.47</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-details" id="details-ORD-2023-1234">
+                <button class="close-details">&times;</button>
+                <h2>Order #ORD-2023-1234</h2>
+                <p>Placed on March 15, 2025</p>
+                <div class="order-status status-canceled" style="display: inline-block; margin-bottom: 20px;">Canceled</div>
+                
+                <div class="shipping-address">
+                    <h3>Shipping Address</h3>
+                    <p>Jane Doe<br>123 Main Street<br>Apt 4B<br>New York, NY 10001</p>
+                </div>
+                
+                <div class="order-products">
+                    <h3>Products</h3>
+                    <div class="product-item">
+                        <div class="product-info">
+                            <div>
+                                <div>Smartwatch</div>
+                            </div>
+                        </div>
+                        <div class="price-qty">
+                            <div>$199.99 × 1</div>
+                            <div>$199.99</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <div class="summary-label">Subtotal:</div>
+                        <div class="summary-value">$199.99</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Shipping:</div>
+                        <div class="summary-value">$0.00</div>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-label">Tax:</div>
+                        <div class="summary-value">$16.50</div>
+                    </div>
+                    <div class="summary-row total">
+                        <div class="summary-label">Total:</div>
+                        <div class="summary-value">$216.49</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer Container -->
+    <div id="foot-container"></div>
+    
+    <!-- Main JavaScript -->
+    
+     <script src="../javascript/main.js"></script> 
+    <script src="../javascript/order.js"></script>
+    
+</body>
+</html>

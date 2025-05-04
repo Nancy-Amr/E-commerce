@@ -1,0 +1,139 @@
+.checkout-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.checkout-section {
+    margin-bottom: 2rem;
+}
+
+.checkout-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--deep-teal);
+}
+
+.address-details p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: minmax(200px, 2fr) 100px 120px;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--soft-blush);
+    gap: 1.5rem;
+}
+
+.item-info {
+    text-align: left;
+    min-width: 200px;
+}
+
+.item-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.item-quantity {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.item-price {
+    text-align: right;
+    font-family: monospace;
+    font-size: 1rem;
+    color: var(--golden);
+    padding-right: 10px;
+}
+
+.form-input {
+    padding: 0.6rem;
+    border: 1px solid var(--soft-blush);
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.coupon-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 300px;
+}
+
+#coupon-code {
+    flex: 1;
+    padding: 0.6rem;
+    border: 1px solid var(--soft-blush);
+    border-radius: 4px;
+}
+
+#apply-coupon {
+    background: var(--golden);
+    color: white;
+    border: 1px solid var(--golden);
+    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.coupon-status {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--deep-teal);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    position: relative;
+}
+
+.summary-row:not(.total):after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px dashed var(--soft-blush);
+}
+
+.summary-row.total {
+    border-top: 2px solid var(--soft-blush);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.place-order-btn {
+    background-color: var(--deep-teal);
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.place-order-btn:hover {
+    background-color: #1a5c5a;
+}

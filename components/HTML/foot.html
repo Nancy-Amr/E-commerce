@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="../style/foot.css" class="dynamic-css">
+<footer class="clearfix">
+    <div class="footer-container clearfix">
+        <div class="footer-col">
+            <h3>ITAKEYOU</h3>
+            <div class="catchy-description">
+                Unleash your inner radiance with our luxurious makeup collection. 
+                Where every brushstroke tells your unique beauty story. 
+                Because you deserve to shine!
+            </div>
+        </div>
+        
+        <div class="footer-col">
+            <h3>Shop</h3>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="products.html" class="footer-link">All Products</a>
+            <a href="cart.html" class="footer-link">Shopping Cart</a>
+            <a href="checkout.html" class="footer-link">Checkout</a>
+        </div>
+        
+        <div class="footer-col">
+            <h3>Your Account</h3>
+            <a href="registration.html" class="footer-link">Register</a>
+            <a href="login.html" class="footer-link">Login</a>
+            <a href="profile.html" class="footer-link">Profile</a>
+            <a href="order.html" class="footer-link">Order History</a>
+            <a href="refund.html" class="footer-link">Refund Policy</a>
+        </div>
+        
+        <div class="footer-col">
+            <h3>Contact Us</h3>
+            <div class="contact-info">
+                <p><span class="contact-icon email-icon"></span> info@itakeyou.com</p>
+                <p><span class="contact-icon phone-icon"></span> +20 123 456 7890</p>
+                <p><span class="contact-icon location-icon"></span> Cairo, Egypt</p>
+                <p><span class="contact-icon time-icon"></span> Mon-Fri: 9AM-6PM</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        &copy; 2025 ITAKEYOU. All rights reserved. | 
+        <a href="#" style="color:var(--soft-blush);">Privacy Policy</a> | 
+        <a href="#" style="color:var(--soft-blush);">Terms</a>
+    </div>
+</footer>
+
+<script src="../javascript/foot.js"></script>
+<script>
+    // Load footer content
+    fetch('foot.html')
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('footer').innerHTML = data;
+        });
+</script>
