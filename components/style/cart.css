@@ -279,3 +279,120 @@
 .continue-shopping-btn:hover {
     background-color: var(--golden);
 }
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .cart-container {
+        padding: 0 1.5rem;
+    }
+
+    .cart-layout {
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cart-layout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .cart-items-container,
+    .cart-summary-container {
+        width: 100%;
+    }
+
+    .cart-header {
+        display: none; /* Hide header on mobile */
+    }
+
+    .cart-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem 0;
+        position: relative;
+    }
+
+    .item-info {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .item-price,
+    .item-total {
+        text-align: left;
+        padding: 0.5rem 0;
+    }
+
+    .item-controls {
+        justify-content: flex-start;
+    }
+
+    .remove-btn {
+        position: absolute;
+        top: 1rem;
+        right: 0;
+    }
+
+    .cart-summary {
+        position: sticky;
+        bottom: 0;
+        margin-top: 1rem;
+    }
+
+    .coupon-input-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #apply-coupon {
+        width: 100%;
+        margin-left: 0;
+        border-radius: 4px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cart-container {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+
+    .cart-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .item-name {
+        font-size: 1rem;
+    }
+
+    .cart-summary h2 {
+        font-size: 1.2rem;
+    }
+
+    .summary-row {
+        font-size: 0.9rem;
+    }
+
+    .checkout-btn {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .empty-cart {
+        padding: 2rem 1rem;
+    }
+
+    .empty-cart h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Add smooth transitions for responsive changes */
+.cart-layout,
+.cart-item,
+.cart-summary {
+    transition: all 0.3s ease-in-out;
+}
