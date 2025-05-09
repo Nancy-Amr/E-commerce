@@ -61,7 +61,8 @@
     align-items: center;
     padding: 1rem 0;
     border-bottom: 1px solid var(--soft-blush);
-    gap: 1.5rem; /* Matching gap between columns */
+    gap: 1.5rem;
+    position: relative;
 }
 
 .item-info {
@@ -148,6 +149,8 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 /* Rest of your existing CSS remains unchanged */
@@ -370,10 +373,12 @@
         border: 1px solid var(--soft-blush);
         border-radius: 8px;
         margin-bottom: 1rem;
+        position: relative;
     }
 
     .item-info {
         flex-wrap: wrap;
+        padding-right: 40px; /* Make space for the remove button */
     }
 
     .item-image {
@@ -400,6 +405,8 @@
         position: absolute;
         top: 1rem;
         right: 1rem;
+        margin: 0;
+        z-index: 2;
     }
 
     .coupon-row {
@@ -460,6 +467,15 @@
     .item-image {
         width: 50px;
         height: 50px;
+    }
+
+    .remove-btn {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .item-info {
+        padding-right: 35px;
     }
 }
 
