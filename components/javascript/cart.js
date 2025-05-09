@@ -386,9 +386,50 @@ function attachEventListeners() {
     // Checkout button listener
     const checkoutBtn = document.querySelector('.checkout-btn');
     if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', (e) => {
+        checkoutBtn.addEventListener('click', async (e) => {
             e.preventDefault();
-            window.location.href = 'checkout.html';
+            
+            // Get current cart data
+            const cart = await fetchCart();
+            if (!cart || !cart.items || cart.items.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            try {
+                // Format cart data for checkout
+                const formattedCart = {
+                    items: cart.items.map(item => ({
+                        name: item.product.name,
+                        price: item.product.price,
+                        quantity: item.quantity,
+                        product_colors: item.product.colors,
+                        price_sign: '$'
+                    })),
+                    subtotal: cart.items.reduce((sum, item) => 
+                        sum + (item.product.price * item.quantity), 0),
+                    shipping: 50, // Default shipping cost
+                    tax: 0, // Will be calculated in checkout
+                    total: 0 // Will be calculated in checkout
+                };
+
+                // Save formatted cart data
+                localStorage.setItem('cart', JSON.stringify(formattedCart));
+                
+                // Verify the data was saved correctly
+                const savedCart = localStorage.getItem('cart');
+                if (!savedCart) {
+                    throw new Error('Failed to save cart data');
+                }
+
+                // Add a small delay to ensure data is persisted
+                setTimeout(() => {
+                    window.location.href = 'checkout.html';
+                }, 100);
+            } catch (error) {
+                console.error('Error preparing checkout:', error);
+                alert('Failed to prepare checkout. Please try again.');
+            }
         });
     }
 }
@@ -397,6 +438,13 @@ function attachEventListeners() {
 function initCart(cartData = null) {
     console.log('initCart called with data:', cartData);
     
+    // If we already have cart data, use it directly
+    if (cartData) {
+        console.log('Using provided cart data');
+        loadCartWithData(cartData);
+        return;
+    }
+
     // Wait for DOM to be fully loaded
     if (document.readyState === 'loading') {
         console.log('DOM still loading, waiting for DOMContentLoaded');
@@ -407,13 +455,8 @@ function initCart(cartData = null) {
                 showEmptyCart();
                 return;
             }
-            if (cartData) {
-                console.log('Using provided cart data');
-                loadCartWithData(cartData);
-            } else {
-                console.log('No cart data provided, fetching from API');
-                loadCart();
-            }
+            console.log('Fetching cart from API');
+            loadCart();
         });
     } else {
         console.log('DOM already loaded');
@@ -422,13 +465,8 @@ function initCart(cartData = null) {
             showEmptyCart();
             return;
         }
-        if (cartData) {
-            console.log('Using provided cart data');
-            loadCartWithData(cartData);
-        } else {
-            console.log('No cart data provided, fetching from API');
-            loadCart();
-        }
+        console.log('Fetching cart from API');
+        loadCart();
     }
 }
 
@@ -484,8 +522,18 @@ window.loadCartWithData = loadCartWithData;
 // Initialize if DOM is already loaded
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
     console.log('Document already loaded, initializing cart');
-    setTimeout(() => initCart(), 0);
+    // Only initialize if not already initialized by main.js
+    if (!window.cartInitialized) {
+        window.cartInitialized = true;
+        setTimeout(() => initCart(), 0);
+    }
 } else {
     console.log('Waiting for DOMContentLoaded to initialize cart');
-    document.addEventListener('DOMContentLoaded', () => initCart());
+    document.addEventListener('DOMContentLoaded', () => {
+        // Only initialize if not already initialized by main.js
+        if (!window.cartInitialized) {
+            window.cartInitialized = true;
+            initCart();
+        }
+    });
 }
