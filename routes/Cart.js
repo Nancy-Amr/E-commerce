@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
-const auth = require('../middleware/auth');
+const { protect } = require('../middleware/auth');
 
 // Get user's cart
-router.get('/', auth, async (req, res) => {
+router.get('/', protect, async (req, res) => {
     try {
         let cart = await Cart.findOne({ user: req.user.id })
             .populate('items.product');
@@ -23,7 +23,7 @@ router.get('/', auth, async (req, res) => {
 });
 
 // Add item to cart
-router.post('/add', auth, async (req, res) => {
+router.post('/add', protect, async (req, res) => {
     try {
         const { productId, quantity } = req.body;
 
@@ -60,7 +60,7 @@ router.post('/add', auth, async (req, res) => {
 });
 
 // Update cart item quantity
-router.put('/update', auth, async (req, res) => {
+router.put('/update', protect, async (req, res) => {
     try {
         const { productId, quantity } = req.body;
 
@@ -89,7 +89,7 @@ router.put('/update', auth, async (req, res) => {
 });
 
 // Remove item from cart
-router.delete('/remove/:productId', auth, async (req, res) => {
+router.delete('/remove/:productId', protect, async (req, res) => {
     try {
         const cart = await Cart.findOne({ user: req.user.id });
         if (!cart) {
