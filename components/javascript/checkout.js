@@ -193,6 +193,95 @@ function displayCartItems() {
     }
 }
 
+// Handle payment method change
+function handlePaymentMethodChange(select) {
+    const cardDetails = document.getElementById('card-details');
+    if (select.value === 'card') {
+        cardDetails.style.display = 'block';
+        // Add input event listeners for formatting
+        document.getElementById('card-number').addEventListener('input', formatCardNumber);
+        document.getElementById('card-expiry').addEventListener('input', formatExpiryDate);
+        document.getElementById('card-cvc').addEventListener('input', formatCVC);
+    } else {
+        cardDetails.style.display = 'none';
+    }
+    updateSummary();
+}
+
+// Format card number with spaces
+function formatCardNumber(event) {
+    let input = event.target;
+    let value = input.value.replace(/\D/g, '');
+    let formattedValue = '';
+    for (let i = 0; i < value.length; i++) {
+        if (i > 0 && i % 4 === 0) {
+            formattedValue += ' ';
+        }
+        formattedValue += value[i];
+    }
+    input.value = formattedValue;
+}
+
+// Format expiry date
+function formatExpiryDate(event) {
+    let input = event.target;
+    let value = input.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2);
+    }
+    input.value = value;
+}
+
+// Format CVC
+function formatCVC(event) {
+    let input = event.target;
+    input.value = input.value.replace(/\D/g, '');
+}
+
+// Validate card details
+function validateCardDetails() {
+    const cardNumber = document.getElementById('card-number').value.replace(/\s/g, '');
+    const expiryDate = document.getElementById('card-expiry').value;
+    const cvc = document.getElementById('card-cvc').value;
+    const cardName = document.getElementById('card-name').value;
+
+    if (!cardNumber || cardNumber.length < 16) {
+        alert('Please enter a valid card number');
+        return false;
+    }
+
+    if (!expiryDate || !expiryDate.includes('/')) {
+        alert('Please enter a valid expiry date (MM/YY)');
+        return false;
+    }
+
+    const [month, year] = expiryDate.split('/');
+    const currentYear = new Date().getFullYear() % 100;
+    const currentMonth = new Date().getMonth() + 1;
+
+    if (parseInt(month) < 1 || parseInt(month) > 12) {
+        alert('Please enter a valid month (01-12)');
+        return false;
+    }
+
+    if (parseInt(year) < currentYear || (parseInt(year) === currentYear && parseInt(month) < currentMonth)) {
+        alert('Card has expired');
+        return false;
+    }
+
+    if (!cvc || cvc.length < 3) {
+        alert('Please enter a valid CVC');
+        return false;
+    }
+
+    if (!cardName) {
+        alert('Please enter the name on card');
+        return false;
+    }
+
+    return true;
+}
+
 // Place order action
 async function placeOrder() {
     const cart = getCart();
@@ -205,9 +294,19 @@ async function placeOrder() {
         return;
     }
 
+    const paymentMethod = document.getElementById("payment-method").value;
+
     try {
-        // Here you would typically send the order data to your backend
-        // For now, we'll just clear the cart and show a success message
+        if (paymentMethod === 'card') {
+            if (!validateCardDetails()) {
+                return;
+            }
+            // Here you would typically process the card payment
+            // For now, we'll just simulate a successful payment
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+        }
+
+        // Clear cart and show success message
         localStorage.removeItem('cart');
         alert("Order placed successfully!");
         window.location.href = '/'; // Redirect to home page

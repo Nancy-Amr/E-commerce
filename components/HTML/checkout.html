@@ -82,12 +82,35 @@
             <!-- 4. Payment Method -->
             <div class="checkout-section">
                 <h2>Payment Method</h2>
-                <select id="payment-method" class="form-input" onchange="updateSummary()">
+                <select id="payment-method" class="form-input" onchange="handlePaymentMethodChange(this)">
                     <option value="card">Card</option>
                     <option value="cash">Cash on Delivery (+1%)</option>
                     <option value="fawry">Fawry</option>
                     <option value="instapay">InstaPay</option>
                 </select>
+                <!-- Card details container -->
+                <div id="card-details" style="display: none; margin-top: 1rem;">
+                    <div class="card-input-group">
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="card-expiry">Expiry Date</label>
+                                <input type="text" id="card-expiry" class="form-input" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvc">CVC</label>
+                                <input type="text" id="card-cvc" class="form-input" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-name">Name on Card</label>
+                            <input type="text" id="card-name" class="form-input" placeholder="John Doe">
+                        </div>
+                    </div>
+                </div>
             </div>
 
       

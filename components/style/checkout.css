@@ -262,3 +262,74 @@
         padding: 0.7rem;
     }
 }
+
+.card-input-group {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--soft-blush);
+    border-radius: 8px;
+    background-color: var(--pure-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--deep-teal);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-group .form-input {
+    width: 100%;
+    max-width: none;
+    padding: 0.8rem;
+    border: 1px solid var(--soft-blush);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form-group .form-input:focus {
+    border-color: var(--deep-teal);
+    box-shadow: 0 0 0 2px rgba(26, 92, 90, 0.1);
+    outline: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+#card-number {
+    letter-spacing: 1px;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+#card-expiry, #card-cvc {
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments for card section */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .card-input-group {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+}
