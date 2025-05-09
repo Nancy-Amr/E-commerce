@@ -1,0 +1,77 @@
+:root {
+    --dusty-rose: #866878;
+    --deep-teal: #d98895;
+    --vibrant-teal: #d49BA7;
+    --soft-blush: #DAABB5;
+    --hot-pink: #EF03A0;
+    --golden: #53222a;
+    --pure-white: #FFFFFF;
+    --ivory: #FFFFF5;
+}
+
+.form-control{
+   
+
+    background-color: var(--input-bg);
+    border: 1px solid var(--deep-teal); /* Bootstrap default */
+  }
+
+  
+  /* Gradient for header and button only */
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--dusty-rose), var(--deep-teal));
+    color: var(--text-light);
+    border: none;
+  }
+    
+  /* Hover effects */
+  .btn.gradient-bg:hover {
+    background: linear-gradient(135deg, var(--deep-teal), var(--dusty-rose));
+  }
+
+  .rating {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.rating i {
+    color: #ccc;
+    transition: color 0.2s ease;
+    pointer-events: auto; /* Ensure clicks are registered */
+}
+
+.rating i.fas {
+    color: #f5c518;
+}
+
+#notification {
+  transition: all 0.3s ease;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+#notification.show {
+  opacity: 1;
+  height: auto;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+.rating-stars { color: gold; }
+.table-container { max-height: 70vh; overflow-y: auto; }
+.feedback-card { transition: all 0.3s; }
+.feedback-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }

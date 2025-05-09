@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ITAKEYOU - Checkout</title>
+
+    <link rel="stylesheet" href="../style/nav.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/foot.css">
+    <link rel="stylesheet" href="../style/checkout.css">
+
+    <link rel="icon" href="data:,">
+</head>
+
+
+<body>
+    <!-- Navigation Container -->
+    <div id="nav-container"></div>
+
+      <!-- Dynamic Content Area -->
+    <main id="content-container">
+        <div class="checkout-container">
+            <h1>Checkout</h1>
+            <br>
+
+            <!-- Loading State -->
+            <div id="checkout-loading" class="loading-state" style="display: none;">
+                <div class="spinner"></div>
+                <p>Loading checkout information...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="checkout-error" class="error-state" style="display: none;">
+                <p>Error loading checkout information. Please try again.</p>
+            </div>
+
+            <!-- Empty Cart State -->
+            <div id="empty-cart" class="empty-state" style="display: none;">
+                <p>Your cart is empty. Please add items before checkout.</p>
+                <a href="products.html" class="continue-shopping-btn">Continue Shopping</a>
+            </div>
+
+            <!-- Checkout Content -->
+            <div id="checkout-content" style="display: none;">
+                <!-- 1. Customer Address Form -->
+                <div class="checkout-section">
+                    <h2>Shipping Address</h2>
+                    <form id="address-form" class="address-form">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Street Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State/Province</label>
+                                <input type="text" id="state" name="state" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal-code">Postal Code</label>
+                            <input type="text" id="postal-code" name="postalCode" required>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 2. Order Summary -->
+                <div class="checkout-section">
+                    <h2>Order Summary</h2>
+                    <div id="order-items" class="order-items">
+                        <!-- Items will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- 3. Shipping Method -->
+                <div class="checkout-section">
+                    <h2>Shipping Method</h2>
+                    <select id="shipping-method" class="form-input">
+                        <option value="regular">Regular Shipping (3-5 days)</option>
+                        <option value="fast">Express Shipping (1-2 days) (+9%)</option>
+                    </select>
+                    <p>Shipping Cost: <span id="shipping-cost">0.00</span> EGP</p>
+                </div>
+
+                <!-- 4. Payment Method -->
+                <div class="checkout-section">
+                    <h2>Payment Method</h2>
+                    <select id="payment-method" class="form-input">
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="cash">Cash on Delivery (+1%)</option>
+                        <option value="fawry">Fawry</option>
+                        <option value="instapay">InstaPay</option>
+                    </select>
+                </div>
+
+                <!-- 5. Coupon Application -->
+                <div class="checkout-section">
+                    <h2>Apply Coupon</h2>
+                    <div class="coupon-input-group">
+                        <input type="text" id="coupon-code" class="form-input" placeholder="Enter coupon code">
+                        <button id="apply-coupon" onclick="applyCoupon()">Apply</button>
+                    </div>
+                    <p id="coupon-status" class="coupon-status"></p>
+                </div>
+
+                <!-- 6. Price Summary -->
+                <div class="checkout-section">
+                    <h2>Price Summary</h2>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">0.00</span> EGP
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping Fee</span>
+                        <span id="summary-shipping">0.00</span> EGP
+                    </div>
+                    <div class="summary-row">
+                        <span>Promotions Discount</span>
+                        <span id="promo-discount">0.00</span> EGP
+                    </div>
+                    <div class="summary-row">
+                        <span>Coupon Discount</span>
+                        <span id="coupon-discount">0.00</span> EGP
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (10%)</span>
+                        <span id="tax">0.00</span> EGP
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">0.00</span> EGP
+                    </div>
+                </div>
+
+                <!-- 7. Place Order Button -->
+                <button id="place-order-btn" class="place-order-btn" disabled>Place Order</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="foot-container"></div>
+
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/checkout.js"></script>
+</body>
+</html>

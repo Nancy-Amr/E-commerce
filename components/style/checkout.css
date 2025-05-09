@@ -1,0 +1,229 @@
+.checkout-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Loading, Error, and Empty States */
+.loading-state,
+.error-state,
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    background: var(--soft-blush);
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--soft-blush);
+    border-top: 4px solid var(--deep-teal);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.continue-shopping-btn {
+    display: inline-block;
+    background: var(--deep-teal);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+.continue-shopping-btn:hover {
+    background-color: #1a5c5a;
+}
+
+/* Checkout Sections */
+.checkout-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.checkout-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--deep-teal);
+}
+
+/* Address Form */
+.address-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 600px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: var(--deep-teal);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-input {
+    padding: 0.8rem;
+    border: 1px solid var(--soft-blush);
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--deep-teal);
+    outline: none;
+}
+
+/* Order Items */
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: minmax(200px, 2fr) 100px 120px;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--soft-blush);
+    gap: 1.5rem;
+}
+
+.item-info {
+    text-align: left;
+    min-width: 200px;
+}
+
+.item-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.item-info small {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.item-quantity {
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+}
+
+.item-price {
+    text-align: right;
+    font-family: monospace;
+    font-size: 1rem;
+    color: var(--golden);
+    padding-right: 10px;
+}
+
+/* Shipping and Payment Methods */
+select.form-input {
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Price Summary */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    position: relative;
+    color: #666;
+}
+
+.summary-row:not(.total):after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px dashed var(--soft-blush);
+}
+
+.summary-row.total {
+    border-top: 2px solid var(--soft-blush);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--deep-teal);
+}
+
+/* Place Order Button */
+.place-order-btn {
+    background-color: var(--deep-teal);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.place-order-btn:hover:not(:disabled) {
+    background-color: #1a5c5a;
+    transform: translateY(-1px);
+}
+
+.place-order-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkout-container {
+        margin: 1rem auto;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .order-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .item-info {
+        text-align: center;
+    }
+
+    .item-quantity,
+    .item-price {
+        text-align: center;
+        padding: 0;
+    }
+}

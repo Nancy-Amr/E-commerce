@@ -1,0 +1,261 @@
+:root {
+    --dusty-rose: #866878;
+    --deep-teal: #d98895;
+    --vibrant-teal: #d49BA7;
+    --soft-blush: #DAABB5;
+    --hot-pink: #5f0440;
+    --golden: #53222a;
+    --pure-white: #FFFFFF;
+    --ivory: #FFFFF5;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background: linear-gradient(to bottom, var(--ivory), var(--soft-blush));
+    color: var(--golden);
+    line-height: 1.6;
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background-color: var(--pure-white);
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(134, 104, 120, 0.15);
+}
+
+h1 {
+    text-align: center;
+    color: var(--hot-pink);
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    background: linear-gradient(to right, var(--hot-pink), var(--deep-teal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#form-container {
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: linear-gradient(to bottom right, var(--pure-white), var(--ivory));
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(217, 136, 149, 0.15);
+    border: 1px solid var(--soft-blush);
+}
+
+form input, form textarea, form select {
+    display: block;
+    width: 100%;
+    margin: 0.75rem 0;
+    padding: 0.85rem;
+    font-size: 1rem;
+    border: 2px solid var(--vibrant-teal);
+    border-radius: 8px;
+    background-color: var(--ivory);
+    color: var(--golden);
+    transition: all 0.3s ease;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+    outline: none;
+    border-color: var(--hot-pink);
+    box-shadow: 0 0 0 3px rgba(239, 3, 160, 0.25);
+}
+
+.price-input {
+    display: flex;
+    gap: 2%;
+    align-items: center;
+}
+
+.price-input input[type="text"] {
+    width: 20%;
+    text-align: center;
+}
+
+.price-input input[type="number"] {
+    width: 78%;
+}
+
+form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+form button {
+    background: linear-gradient(to right, var(--deep-teal), var(--vibrant-teal));
+    color: var(--pure-white);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.9rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+form button:hover {
+    background: var(--hot-pink);
+    transform: translateY(-2px);
+}
+
+#cancel-edit {
+    background-color: var(--dusty-rose);
+    margin-top: 0.75rem;
+}
+
+#cancel-edit:hover {
+    background-color: var(--hot-pink);
+}
+
+#products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: var(--pure-white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 16px rgba(149, 13, 86, 0.1);
+    border: 1px solid var(--soft-blush);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(239, 3, 160, 0.12);
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--deep-teal), var(--hot-pink));
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
+    background-color: var(--ivory);
+    padding: 10px;
+    border: 1px solid var(--soft-blush);
+}
+
+.product-card h2 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.3rem;
+    color: var(--hot-pink);
+    font-weight: 700;
+}
+
+.product-card p {
+    margin: 0.4rem 0;
+    color: var(--dusty-rose);
+    font-size: 0.95rem;
+}
+
+.product-card p strong {
+    color: var(--golden);
+    font-weight: 600;
+}
+
+.product-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.product-actions button {
+    padding: 0.65rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    flex: 1;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.edit-btn {
+    background-color: var(--vibrant-teal);
+    color: var(--pure-white);
+}
+
+.edit-btn:hover {
+    background-color: var(--hot-pink);
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background-color: var(--deep-teal);
+    color: var(--pure-white);
+}
+
+.delete-btn:hover {
+    background-color: var(--hot-pink);
+    transform: translateY(-2px);
+}
+
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(to right, var(--hot-pink), var(--vibrant-teal));
+    color: var(--pure-white);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    z-index: 999;
+    animation: fadeIn 0.3s, fadeOut 0.5s 2.5s forwards;
+    box-shadow: 0 4px 12px rgba(0, 34, 42, 0.2);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast::before {
+    content: '✓';
+    font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+
+    #form-container {
+        padding: 1.5rem;
+    }
+
+    #products {
+        grid-template-columns: 1fr;
+    }
+}
+

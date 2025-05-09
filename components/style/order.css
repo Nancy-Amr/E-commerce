@@ -1,0 +1,292 @@
+/* Order page specific styles that match your navigation */
+.orders-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    background: linear-gradient(135deg, var(--golden), var(--hot-pink), var(--deep-teal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--deep-teal), var(--hot-pink), transparent);
+    border-radius: 3px;
+}
+
+/* Grid layout for orders */
+.order-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.order-item {
+    background-color: var(--pure-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(139, 92, 160, 0.15); /* Purple tint shadow */
+    transition: all 0.3s ease;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--soft-blush);
+}
+
+.order-item:hover {
+    box-shadow: 0 8px 25px rgba(139, 92, 160, 0.25); /* Stronger purple shadow on hover */
+    transform: translateY(-5px);
+    border-color: var(--deep-teal);
+}
+
+.order-header {
+    padding: 1.5rem;
+    cursor: pointer;
+    background-color: var(--pure-white);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.order-id {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--golden);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.order-date {
+    color: var(--dusty-rose);
+    font-size: 0.9rem;
+}
+
+.order-status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--pure-white);
+}
+
+/* Status colors matching your theme */
+.status-processing {
+    background: linear-gradient(45deg, var(--golden), var(--deep-teal));
+}
+
+.status-shipped {
+    background: linear-gradient(45deg, var(--deep-teal), var(--vibrant-teal));
+}
+
+.status-delivered {
+    background: linear-gradient(45deg, var(--vibrant-teal), var(--soft-blush));
+    color: var(--golden);
+}
+
+.status-canceled {
+    background: linear-gradient(45deg, var(--hot-pink), #c2185b);
+}
+
+/* Order details section */
+.order-details {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: var(--pure-white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(139, 92, 160, 0.2); /* Purple tint shadow */
+    z-index: 1000;
+    border: 1px solid var(--soft-blush);
+}
+
+.order-details::-webkit-scrollbar {
+    width: 10px;
+}
+
+.order-details::-webkit-scrollbar-track {
+    background: var(--ivory); /* light background */
+    border-radius: 10px;
+}
+
+.order-details::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--deep-teal), var(--hot-pink));
+    border-radius: 10px;
+    border: 2px solid var(--ivory);
+}
+
+.order-details::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--hot-pink), var(--golden));
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(134, 104, 120, 0.7); /* dusty-rose with opacity */
+    z-index: 999;
+}
+
+.order-details.active,
+.overlay.active {
+    display: block;
+}
+
+.close-details {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    color: var(--golden);
+    transition: color 0.3s ease;
+}
+
+.close-details:hover {
+    color: var(--hot-pink);
+}
+
+.shipping-address {
+    margin-bottom: 1.5rem;
+    color: var(--golden);
+    padding: 1rem;
+    background-color: var(--ivory);
+    border-radius: 5px;
+    border-left: 3px solid var(--deep-teal);
+}
+
+.order-products {
+    margin: 1.5rem 0;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--soft-blush);
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+}
+
+.price-qty {
+    text-align: right;
+    color: var(--golden);
+}
+
+.order-summary {
+    margin-top: 1.5rem;
+    text-align: right;
+    background-color: var(--ivory);
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.summary-label {
+    width: 150px;
+    margin-right: 1rem;
+    color: var(--dusty-rose);
+}
+
+.summary-value {
+    width: 100px;
+    font-weight: bold;
+    color: var(--golden);
+}
+
+.total {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 2px solid var(--deep-teal);
+}
+
+/* Make h2 and h3 match your site style */
+h2, h3 {
+    color: var(--golden);
+    margin-bottom: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--soft-blush);
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .order-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .order-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-item {
+        flex-direction: column;
+    }
+    
+    .price-qty {
+        text-align: left;
+        margin-top: 0.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+}
