@@ -29,9 +29,35 @@
             <div class="checkout-section">
                 <h2>Shipping Address</h2>
                 <div class="address-details">
-                    <p><strong>Name:</strong> Menna Ayman</p>
-                    <p><strong>Address:</strong> <span id="customer-address">123 Main St, Cairo</span></p>
-                    <p><strong>Phone:</strong> +20 1122369308</p>
+                    <p><strong>Name:</strong> <span id="customer-name">Loading...</span></p>
+                    <p><strong>Phone:</strong> <span id="customer-phone">Loading...</span></p>
+                    <div class="shipping-address-input">
+                        <div class="address-field">
+                            <label for="shipping-city">City:</label>
+                            <input type="text" id="shipping-city" class="form-input" placeholder="Enter your city" onchange="validateAndConfirmField(this)">
+                            <div class="confirmation-status"></div>
+                        </div>
+                        <div class="address-field">
+                            <label for="shipping-street">Street:</label>
+                            <input type="text" id="shipping-street" class="form-input" placeholder="Enter your street" onchange="validateAndConfirmField(this)">
+                            <div class="confirmation-status"></div>
+                        </div>
+                        <div class="address-field">
+                            <label for="shipping-building">Building:</label>
+                            <input type="text" id="shipping-building" class="form-input" placeholder="Enter building number/name" onchange="validateAndConfirmField(this)">
+                            <div class="confirmation-status"></div>
+                        </div>
+                        <div class="address-field">
+                            <label for="shipping-floor">Floor:</label>
+                            <input type="text" id="shipping-floor" class="form-input" placeholder="Enter floor number" onchange="validateAndConfirmField(this)">
+                            <div class="confirmation-status"></div>
+                        </div>
+                        <div class="address-field">
+                            <label for="shipping-apartment">Apartment:</label>
+                            <input type="text" id="shipping-apartment" class="form-input" placeholder="Enter apartment number" onchange="validateAndConfirmField(this)">
+                            <div class="confirmation-status"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -27,16 +27,99 @@ function getCart() {
 
 let couponDiscount = 0;
 
-// Calculate shipping cost based on address and method
+// Get user information
+async function getUserInfo() {
+    try {
+        const response = await fetch('/api/auth/me', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch user info');
+        }
+
+        const result = await response.json();
+        if (!result.success || !result.data) {
+            throw new Error('Invalid user data');
+        }
+
+        // Update the display with user information
+        const userInfo = result.data;
+        document.getElementById('customer-name').textContent = userInfo.fullname || 'Not provided';
+        
+        // Get the first phone number from the array, or use a default message
+        const phoneNumber = userInfo.phoneNumbers && userInfo.phoneNumbers.length > 0 
+            ? userInfo.phoneNumbers[0] 
+            : 'Not provided';
+        document.getElementById('customer-phone').textContent = phoneNumber;
+
+        return userInfo;
+    } catch (error) {
+        console.error('Error fetching user info:', error);
+        // Set default values if fetch fails
+        document.getElementById('customer-name').textContent = 'Not available';
+        document.getElementById('customer-phone').textContent = 'Not available';
+        return null;
+    }
+}
+
+// Calculate shipping cost based on city and method
 function calculateShipping() {
-    const address = document.getElementById("customer-address").textContent;
+    const city = document.getElementById("shipping-city").value.toLowerCase();
     const method = document.getElementById("shipping-method").value;
 
     let baseCost = 50; // Default Cairo
 
-    if (address.includes("Giza")) baseCost = 70;
-    else if (!address.includes("Cairo")) baseCost = 100;
+    if (city.includes("giza")) baseCost = 70;
+    else if (!city.includes("cairo")) baseCost = 100;
+
     return method === "fast" ? baseCost * 1.09 : baseCost;
+}
+
+// Validate shipping address
+function validateShippingAddress() {
+    const city = document.getElementById("shipping-city").value.trim();
+    const street = document.getElementById("shipping-street").value.trim();
+    const building = document.getElementById("shipping-building").value.trim();
+    const floor = document.getElementById("shipping-floor").value.trim();
+    const apartment = document.getElementById("shipping-apartment").value.trim();
+
+    if (!city) {
+        alert("Please enter your city");
+        return false;
+    }
+    if (!street) {
+        alert("Please enter your street");
+        return false;
+    }
+    if (!building) {
+        alert("Please enter your building number/name");
+        return false;
+    }
+    if (!floor) {
+        alert("Please enter your floor number");
+        return false;
+    }
+    if (!apartment) {
+        alert("Please enter your apartment number");
+        return false;
+    }
+
+    return true;
+}
+
+// Get complete shipping address
+function getCompleteAddress() {
+    const city = document.getElementById("shipping-city").value.trim();
+    const street = document.getElementById("shipping-street").value.trim();
+    const building = document.getElementById("shipping-building").value.trim();
+    const floor = document.getElementById("shipping-floor").value.trim();
+    const apartment = document.getElementById("shipping-apartment").value.trim();
+
+    return `${street}, Building ${building}, Floor ${floor}, Apartment ${apartment}, ${city}`;
 }
 
 // Apply coupon (sample logic)
@@ -118,6 +201,10 @@ async function placeOrder() {
         return;
     }
 
+    if (!validateShippingAddress()) {
+        return;
+    }
+
     try {
         // Here you would typically send the order data to your backend
         // For now, we'll just clear the cart and show a success message
@@ -130,14 +217,82 @@ async function placeOrder() {
     }
 }
 
+// Validate and confirm a single field
+function validateAndConfirmField(input) {
+    const value = input.value.trim();
+    const statusDiv = input.nextElementSibling;
+    
+    // Remove existing classes
+    input.classList.remove('confirmed', 'error');
+    statusDiv.classList.remove('confirmed', 'error');
+    
+    if (!value) {
+        input.classList.add('error');
+        statusDiv.classList.add('error');
+        statusDiv.innerHTML = 'This field is required';
+        return false;
+    }
+
+    // Special validation for floor and apartment (should be numbers)
+    if (input.id === 'shipping-floor' || input.id === 'shipping-apartment') {
+        if (!/^\d+$/.test(value)) {
+            input.classList.add('error');
+            statusDiv.classList.add('error');
+            statusDiv.innerHTML = 'Please enter a valid number';
+            return false;
+        }
+    }
+
+    // If it's the city field, update shipping cost
+    if (input.id === 'shipping-city') {
+        updateSummary();
+    }
+
+    // Mark as confirmed
+    input.classList.add('confirmed');
+    statusDiv.classList.add('confirmed');
+    statusDiv.innerHTML = '✓ Confirmed';
+    
+    // Save to localStorage
+    saveAddressField(input.id, value);
+    
+    return true;
+}
+
+// Save address field to localStorage
+function saveAddressField(fieldId, value) {
+    const savedAddress = JSON.parse(localStorage.getItem('shippingAddress') || '{}');
+    savedAddress[fieldId] = value;
+    localStorage.setItem('shippingAddress', JSON.stringify(savedAddress));
+}
+
+// Load saved address fields
+function loadSavedAddress() {
+    const savedAddress = JSON.parse(localStorage.getItem('shippingAddress') || '{}');
+    
+    Object.entries(savedAddress).forEach(([fieldId, value]) => {
+        const input = document.getElementById(fieldId);
+        if (input) {
+            input.value = value;
+            validateAndConfirmField(input);
+        }
+    });
+}
+
 // Initialize checkout page
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     console.log('Checkout page initialized');
     
     // Add a small delay to ensure localStorage is ready
-    setTimeout(() => {
+    setTimeout(async () => {
         const cart = getCart();
         if (!cart) return;
+
+        // Fetch and display user information first
+        await getUserInfo();
+
+        // Load saved address
+        loadSavedAddress();
 
         console.log('Cart data loaded:', cart);
         displayCartItems();

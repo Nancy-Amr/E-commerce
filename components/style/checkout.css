@@ -14,9 +14,18 @@
     color: var(--deep-teal);
 }
 
+.address-details {
+    background-color: var(--pure-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--soft-blush);
+}
+
 .address-details p {
     margin: 0.5rem 0;
     font-size: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--soft-blush);
 }
 
 .order-items {
@@ -168,4 +177,88 @@
 
 .place-order-btn:hover {
     background-color: #1a5c5a;
+}
+
+.shipping-address-input {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0.5rem;
+}
+
+.address-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.address-field label {
+    font-weight: 500;
+    color: var(--deep-teal);
+    font-size: 0.9rem;
+}
+
+.address-field .form-input {
+    padding: 0.8rem;
+    border: 1px solid var(--soft-blush);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: none;
+}
+
+.address-field .form-input:focus {
+    border-color: var(--deep-teal);
+    box-shadow: 0 0 0 2px rgba(26, 92, 90, 0.1);
+    outline: none;
+}
+
+.address-field .form-input.confirmed {
+    border-color: #4CAF50;
+    background-color: #f8fff8;
+}
+
+.address-field .form-input.error {
+    border-color: #f44336;
+    background-color: #fff8f8;
+}
+
+.address-field .confirmation-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    min-height: 1.2rem;
+}
+
+.address-field .confirmation-status.confirmed {
+    color: #4CAF50;
+}
+
+.address-field .confirmation-status.error {
+    color: #f44336;
+}
+
+/* Make city field span full width */
+.address-field:first-child {
+    grid-column: 1 / -1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .shipping-address-input {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .address-details {
+        padding: 1rem;
+    }
+
+    .address-field .form-input {
+        padding: 0.7rem;
+    }
 }
